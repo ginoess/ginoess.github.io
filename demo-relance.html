@@ -3,118 +3,69 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Demo Relances Automatiques</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<title>Démo Relances Automatiques</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'DM Sans',sans-serif;background:#F5F5F0;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:2rem 1rem}
-h1{font-size:clamp(1.4rem,3vw,1.8rem);text-align:center;margin-bottom:.5rem;color:#1A1A18}
-.sub{text-align:center;color:#6B6963;margin-bottom:2rem;font-size:.9rem;max-width:520px}
+body{font-family:'Inter',sans-serif;background:#0a0a0a;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:2.5rem 1rem;color:#f0efe9}
+h1{font-size:clamp(1.4rem,3vw,1.8rem);text-align:center;margin-bottom:.5rem;letter-spacing:-0.02em}
+.sub{text-align:center;color:rgba(240,239,233,.55);margin-bottom:2.5rem;font-size:.9rem;max-width:520px;line-height:1.7;font-weight:300}
 .container{width:100%;max-width:560px}
-.form-card{background:#fff;border:1px solid #E8E6E1;border-radius:12px;padding:20px;margin-bottom:16px}
-.form-card h3{font-size:14px;margin-bottom:12px}
+.form-card{background:#111;border:1px solid rgba(255,255,255,.06);border-radius:14px;padding:22px;margin-bottom:18px}
+.form-card h3{font-size:14px;margin-bottom:14px;font-weight:600}
 .form-row{margin-bottom:10px}
-.form-row label{display:block;font-size:12px;color:#6B6963;margin-bottom:4px}
-.form-row input{width:100%;border:1px solid #E0DED8;border-radius:8px;padding:9px 12px;font-size:13px;font-family:'DM Sans',sans-serif;outline:none}
-.btn{background:#1D6B4F;color:#fff;border:none;border-radius:20px;padding:10px 24px;font-size:13px;font-family:'DM Sans',sans-serif;cursor:pointer;font-weight:500;width:100%}
-.timeline{position:relative;padding-left:28px;margin-top:10px}
-.timeline::before{content:'';position:absolute;left:10px;top:0;bottom:0;width:2px;background:#E0DED8}
-.tl-item{position:relative;margin-bottom:20px;opacity:0;transform:translateX(-10px);transition:all .5s ease}
+.form-row label{display:block;font-size:11px;color:rgba(240,239,233,.45);margin-bottom:5px;font-weight:500;letter-spacing:0.02em}
+.form-row input{width:100%;border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:10px 14px;font-size:13px;font-family:'Inter',sans-serif;outline:none;background:#161616;color:#f0efe9;transition:border-color .3s ease}
+.form-row input:focus{border-color:rgba(62,207,142,.4)}
+.btn{background:#3ecf8e;color:#0a0a0a;border:none;border-radius:50px;padding:11px 24px;font-size:13px;font-family:'Inter',sans-serif;cursor:pointer;font-weight:600;width:100%;transition:all .3s ease}
+.btn:hover{transform:translateY(-2px);box-shadow:0 4px 24px rgba(62,207,142,.3)}
+.timeline{position:relative;padding-left:28px;margin-top:12px}
+.timeline::before{content:'';position:absolute;left:10px;top:0;bottom:0;width:2px;background:rgba(255,255,255,.06)}
+.tl-item{position:relative;margin-bottom:22px;opacity:0;transform:translateX(-12px);transition:all .5s ease}
 .tl-item.show{opacity:1;transform:none}
-.tl-dot{position:absolute;left:-22px;top:6px;width:12px;height:12px;border-radius:50%;border:2px solid #1D6B4F;background:#fff}
-.tl-item.show .tl-dot{background:#1D6B4F}
-.tl-time{font-size:11px;color:#1D6B4F;font-weight:500;background:#E8F5EE;display:inline-block;padding:2px 8px;border-radius:8px;margin-bottom:6px}
-.tl-card{background:#fff;border:1px solid #E8E6E1;border-radius:10px;padding:14px}
-.tl-subject{font-weight:700;font-size:13px;margin-bottom:6px;color:#1A1A18}
-.tl-body{font-size:12.5px;color:#444;line-height:1.6}
-.tl-status{font-size:11px;margin-top:6px;color:#6B6963}
-.tl-status span{color:#1D6B4F;font-weight:500}
-.result{background:#E8F5EE;border-radius:12px;padding:16px;margin-top:16px;text-align:center;display:none;animation:fadeIn .5s ease}
-.result p{color:#1D6B4F;font-size:14px;font-weight:500}
-.result .small{font-size:12px;color:#6B6963;margin-top:4px;font-weight:400}
+.tl-dot{position:absolute;left:-22px;top:6px;width:12px;height:12px;border-radius:50%;border:2px solid rgba(62,207,142,.4);background:#0a0a0a;transition:background .3s ease}
+.tl-item.show .tl-dot{background:#3ecf8e;border-color:#3ecf8e}
+.tl-time{font-size:11px;color:#3ecf8e;font-weight:600;background:rgba(62,207,142,.1);display:inline-block;padding:3px 10px;border-radius:8px;margin-bottom:8px;border:1px solid rgba(62,207,142,.15)}
+.tl-card{background:#111;border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:16px}
+.tl-subject{font-weight:700;font-size:13px;margin-bottom:8px;color:#f0efe9;letter-spacing:-0.01em}
+.tl-body{font-size:12.5px;color:rgba(240,239,233,.6);line-height:1.7;font-weight:300}
+.tl-status{font-size:11px;margin-top:8px;color:rgba(240,239,233,.45)}
+.tl-status span{color:#3ecf8e;font-weight:600}
+.result{background:rgba(62,207,142,.08);border:1px solid rgba(62,207,142,.15);border-radius:14px;padding:18px;margin-top:18px;text-align:center;display:none;animation:fadeIn .5s ease}
+.result p{color:#3ecf8e;font-size:14px;font-weight:600}
+.result .small{font-size:12px;color:rgba(240,239,233,.5);margin-top:5px;font-weight:400}
 @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
-.cta-bottom{margin-top:2rem;text-align:center}
-.cta-bottom a{display:inline-block;background:#1D6B4F;color:#fff;padding:.75rem 2rem;border-radius:50px;font-size:.9rem;text-decoration:none;font-weight:500}
-.cta-bottom p{color:#6B6963;font-size:.8rem;margin-top:.5rem}
+.cta-bottom{margin-top:2.5rem;text-align:center}
+.cta-bottom a{display:inline-block;background:#3ecf8e;color:#0a0a0a;padding:.8rem 2rem;border-radius:50px;font-size:.85rem;text-decoration:none;font-weight:600;transition:all .3s ease}
+.cta-bottom a:hover{transform:translateY(-2px);box-shadow:0 4px 24px rgba(62,207,142,.3)}
+.cta-bottom p{color:rgba(240,239,233,.4);font-size:.78rem;margin-top:.6rem}
 </style>
 </head>
 <body>
-
 <h1>Relances automatiques prospects</h1>
-<p class="sub">Un prospect demande une estimation et ne rappelle pas ? L'IA le relance a J+1, J+3 et J+7. Automatiquement. Vous ne faites rien.</p>
-
+<p class="sub">Un prospect demande une estimation et ne rappelle pas ? L'IA le relance à J+1, J+3 et J+7. Automatiquement. Vous ne faites rien.</p>
 <div class="container">
 <div class="form-card">
 <h3>Simulez un prospect qui demande une estimation</h3>
-<div class="form-row">
-<label>Nom</label>
-<input type="text" id="nom" value="Thomas Leroy">
+<div class="form-row"><label>Nom</label><input type="text" id="nom" value="Thomas Leroy"></div>
+<div class="form-row"><label>Bien concerné</label><input type="text" id="bien" value="Maison T4 avec jardin, Colombes"></div>
+<button class="btn" onclick="launch()">Lancer la séquence de relance</button>
 </div>
-<div class="form-row">
-<label>Bien concerne</label>
-<input type="text" id="bien" value="Maison T4 avec jardin, Colombes">
-</div>
-<button class="btn" onclick="launch()">Lancer la sequence de relance</button>
-</div>
-
 <div class="timeline" id="timeline"></div>
-<div class="result" id="result">
-<p>3 relances envoyees automatiquement sur 7 jours.</p>
-<p class="small">Le prospect revient vers vous sans que vous ayez fait quoi que ce soit.</p>
+<div class="result" id="result"><p>3 relances envoyées automatiquement sur 7 jours.</p><p class="small">Le prospect revient vers vous sans que vous ayez fait quoi que ce soit.</p></div>
 </div>
-</div>
-
-<div class="cta-bottom">
-<a href="https://ginoess.github.io">Automatiser mes relances</a>
-<p>199 euros + 39 euros par mois. Configuration en 48h.</p>
-</div>
-
+<div class="cta-bottom"><a href="https://ginoess.github.io">Automatiser mes relances</a><p>199 € + 39 €/mois. Configuration en 48h.</p></div>
 <script>
-function launch() {
-  const nom = document.getElementById('nom').value;
-  const bien = document.getElementById('bien').value;
-  const tl = document.getElementById('timeline');
-  tl.innerHTML = '';
-  document.getElementById('result').style.display = 'none';
-
-  const items = [
-    {
-      time: "J+1",
-      subject: `${nom}, votre estimation est en cours`,
-      body: `Bonjour ${nom},<br><br>Nous avons bien recu votre demande concernant : ${bien}.<br><br>Notre equipe finalise votre estimation et revient vers vous tres rapidement.<br><br>Cordialement,<br>L'equipe`,
-      status: "Ouvert a 8h42"
-    },
-    {
-      time: "J+3",
-      subject: `${nom}, du nouveau pour votre projet`,
-      body: `Bonjour ${nom},<br><br>Suite a votre demande sur "${bien}", avez-vous des questions ou des criteres supplementaires ?<br><br>Notre expertise locale nous permet de vous accompagner au mieux.<br><br>Cordialement,<br>L'equipe`,
-      status: "Ouvert a 12h15, lien clique"
-    },
-    {
-      time: "J+7",
-      subject: `${nom}, on ne vous oublie pas`,
-      body: `Bonjour ${nom},<br><br>Votre projet concernant "${bien}" est toujours d'actualite ?<br><br>Nous restons a votre disposition. Si votre projet a evolue, dites-le nous.<br><br>A bientot,<br>L'equipe`,
-      status: "Reponse recue : &laquo; Oui, je suis toujours interesse &raquo;"
-    }
-  ];
-
-  items.forEach((item, i) => {
-    const div = document.createElement('div');
-    div.className = 'tl-item';
-    div.innerHTML = `
-      <div class="tl-dot"></div>
-      <div class="tl-time">${item.time}</div>
-      <div class="tl-card">
-        <div class="tl-subject">${item.subject}</div>
-        <div class="tl-body">${item.body}</div>
-        <div class="tl-status">Statut : <span>${item.status}</span></div>
-      </div>
-    `;
-    tl.appendChild(div);
-    setTimeout(() => div.classList.add('show'), 1000 * (i + 1));
-  });
-
-  setTimeout(() => { document.getElementById('result').style.display = 'block'; }, 4500);
+function launch(){
+const nom=document.getElementById('nom').value,bien=document.getElementById('bien').value;
+const tl=document.getElementById('timeline');tl.innerHTML='';document.getElementById('result').style.display='none';
+const items=[
+{time:"J+1",subject:`${nom}, votre estimation est en cours`,body:`Bonjour ${nom},<br><br>Nous avons bien reçu votre demande concernant : ${bien}.<br><br>Notre équipe finalise votre estimation et revient vers vous très rapidement.<br><br>Cordialement,<br>L'équipe`,status:"Ouvert à 8h42"},
+{time:"J+3",subject:`${nom}, du nouveau pour votre projet`,body:`Bonjour ${nom},<br><br>Suite à votre demande sur « ${bien} », avez-vous des questions ou des critères supplémentaires ?<br><br>Notre expertise locale nous permet de vous accompagner au mieux.<br><br>Cordialement,<br>L'équipe`,status:"Ouvert à 12h15, lien cliqué"},
+{time:"J+7",subject:`${nom}, on ne vous oublie pas`,body:`Bonjour ${nom},<br><br>Votre projet concernant « ${bien} » est toujours d'actualité ?<br><br>Nous restons à votre disposition. Si votre projet a évolué, dites-le nous.<br><br>À bientôt,<br>L'équipe`,status:'Réponse reçue : « Oui, je suis toujours intéressé »'}
+];
+items.forEach((item,i)=>{const div=document.createElement('div');div.className='tl-item';div.innerHTML=`<div class="tl-dot"></div><div class="tl-time">${item.time}</div><div class="tl-card"><div class="tl-subject">${item.subject}</div><div class="tl-body">${item.body}</div><div class="tl-status">Statut : <span>${item.status}</span></div></div>`;tl.appendChild(div);setTimeout(()=>div.classList.add('show'),1000*(i+1))});
+setTimeout(()=>{document.getElementById('result').style.display='block'},4500);
 }
 </script>
 </body>

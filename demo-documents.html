@@ -3,144 +3,76 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Demo Tri Documents IA</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<title>Démo Tri Documents IA</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'DM Sans',sans-serif;background:#F5F5F0;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:2rem 1rem}
-h1{font-size:clamp(1.4rem,3vw,1.8rem);text-align:center;margin-bottom:.5rem;color:#1A1A18}
-.sub{text-align:center;color:#6B6963;margin-bottom:2rem;font-size:.9rem;max-width:520px}
+body{font-family:'Inter',sans-serif;background:#0a0a0a;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:2.5rem 1rem;color:#f0efe9}
+h1{font-size:clamp(1.4rem,3vw,1.8rem);text-align:center;margin-bottom:.5rem;letter-spacing:-0.02em}
+.sub{text-align:center;color:rgba(240,239,233,.55);margin-bottom:2.5rem;font-size:.9rem;max-width:520px;line-height:1.7;font-weight:300}
 .container{width:100%;max-width:560px}
-.docs{display:flex;flex-direction:column;gap:10px;margin-bottom:16px}
-.doc{background:#fff;border:1px solid #E8E6E1;border-radius:10px;padding:14px 16px;display:flex;align-items:center;gap:12px;cursor:pointer;transition:all .2s}
-.doc:hover{border-color:#1D6B4F}
-.doc.selected{border-color:#1D6B4F;background:#FAFFF8}
-.doc-icon{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
-.doc-icon.facture{background:#FFF8ED;color:#BA7517}
-.doc-icon.cv{background:#E6F1FB;color:#185FA5}
-.doc-icon.contrat{background:#EEEDFE;color:#534AB7}
-.doc-icon.email{background:#E8F5EE;color:#1D6B4F}
+.docs{display:flex;flex-direction:column;gap:10px;margin-bottom:18px}
+.doc{background:#111;border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:14px 16px;display:flex;align-items:center;gap:12px;cursor:pointer;transition:all .3s ease}
+.doc:hover{border-color:rgba(255,255,255,.12)}
+.doc.selected{border-color:rgba(62,207,142,.3);background:rgba(62,207,142,.04)}
+.doc-icon{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;font-weight:700}
+.doc-icon.facture{background:rgba(232,168,73,.12);color:#e8a849;border:1px solid rgba(232,168,73,.2)}
+.doc-icon.cv{background:rgba(56,136,216,.12);color:#3888d8;border:1px solid rgba(56,136,216,.2)}
+.doc-icon.contrat{background:rgba(127,79,154,.12);color:#7f4f9a;border:1px solid rgba(127,79,154,.2)}
+.doc-icon.email{background:rgba(62,207,142,.12);color:#3ecf8e;border:1px solid rgba(62,207,142,.2)}
 .doc-info{flex:1}
-.doc-name{font-size:13px;font-weight:500;color:#1A1A18}
-.doc-meta{font-size:11px;color:#6B6963;margin-top:2px}
-.btn{background:#1D6B4F;color:#fff;border:none;border-radius:20px;padding:10px 24px;font-size:13px;font-family:'DM Sans',sans-serif;cursor:pointer;font-weight:500;width:100%;margin-bottom:16px}
+.doc-name{font-size:13px;font-weight:600;color:#f0efe9;letter-spacing:-0.01em}
+.doc-meta{font-size:11px;color:rgba(240,239,233,.4);margin-top:3px;font-weight:400}
+.btn{background:#3ecf8e;color:#0a0a0a;border:none;border-radius:50px;padding:11px 24px;font-size:13px;font-family:'Inter',sans-serif;cursor:pointer;font-weight:600;width:100%;margin-bottom:18px;transition:all .3s ease}
+.btn:hover{transform:translateY(-2px);box-shadow:0 4px 24px rgba(62,207,142,.3)}
 .results{display:none}
-.res-card{background:#fff;border:1px solid #E8E6E1;border-radius:10px;padding:16px;margin-bottom:10px;opacity:0;transform:translateY(8px);transition:all .4s ease}
+.res-card{background:#111;border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:18px;margin-bottom:12px;opacity:0;transform:translateY(10px);transition:all .4s ease}
 .res-card.show{opacity:1;transform:none}
-.res-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
-.res-cat{font-size:11px;font-weight:500;padding:3px 10px;border-radius:8px}
-.res-cat.compta{background:#FFF8ED;color:#BA7517}
-.res-cat.rh{background:#E6F1FB;color:#185FA5}
-.res-cat.juridique{background:#EEEDFE;color:#534AB7}
-.res-cat.comm{background:#E8F5EE;color:#1D6B4F}
-.res-title{font-size:13px;font-weight:700;color:#1A1A18}
-.res-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:8px}
+.res-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.res-cat{font-size:10px;font-weight:600;padding:4px 10px;border-radius:8px;letter-spacing:0.02em}
+.res-cat.compta{background:rgba(232,168,73,.12);color:#e8a849;border:1px solid rgba(232,168,73,.2)}
+.res-cat.rh{background:rgba(56,136,216,.12);color:#3888d8;border:1px solid rgba(56,136,216,.2)}
+.res-cat.juridique{background:rgba(127,79,154,.12);color:#7f4f9a;border:1px solid rgba(127,79,154,.2)}
+.res-cat.comm{background:rgba(62,207,142,.12);color:#3ecf8e;border:1px solid rgba(62,207,142,.2)}
+.res-title{font-size:13px;font-weight:700;color:#f0efe9;letter-spacing:-0.01em}
+.res-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
 .res-field{font-size:12px}
-.res-field .label{color:#6B6963}
-.res-field .value{color:#1A1A18;font-weight:500}
-.res-action{margin-top:8px;font-size:11px;color:#1D6B4F;font-weight:500;background:#E8F5EE;display:inline-block;padding:3px 10px;border-radius:8px}
-.summary{background:#E8F5EE;border-radius:12px;padding:16px;text-align:center;margin-top:12px;display:none;animation:fadeIn .5s ease}
-.summary p{color:#1D6B4F;font-size:14px;font-weight:500}
-.summary .small{font-size:12px;color:#6B6963;margin-top:4px;font-weight:400}
+.res-field .label{color:rgba(240,239,233,.4);font-weight:400}
+.res-field .value{color:#f0efe9;font-weight:600;margin-top:2px}
+.res-action{margin-top:10px;font-size:11px;color:#3ecf8e;font-weight:600;background:rgba(62,207,142,.1);display:inline-block;padding:4px 12px;border-radius:8px;border:1px solid rgba(62,207,142,.15)}
+.summary{background:rgba(62,207,142,.08);border:1px solid rgba(62,207,142,.15);border-radius:14px;padding:18px;text-align:center;margin-top:14px;display:none;animation:fadeIn .5s ease}
+.summary p{color:#3ecf8e;font-size:14px;font-weight:600}
+.summary .small{font-size:12px;color:rgba(240,239,233,.5);margin-top:5px;font-weight:400}
 @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
-.cta-bottom{margin-top:2rem;text-align:center}
-.cta-bottom a{display:inline-block;background:#1D6B4F;color:#fff;padding:.75rem 2rem;border-radius:50px;font-size:.9rem;text-decoration:none;font-weight:500}
-.cta-bottom p{color:#6B6963;font-size:.8rem;margin-top:.5rem}
+.cta-bottom{margin-top:2.5rem;text-align:center}
+.cta-bottom a{display:inline-block;background:#3ecf8e;color:#0a0a0a;padding:.8rem 2rem;border-radius:50px;font-size:.85rem;text-decoration:none;font-weight:600;transition:all .3s ease}
+.cta-bottom a:hover{transform:translateY(-2px);box-shadow:0 4px 24px rgba(62,207,142,.3)}
+.cta-bottom p{color:rgba(240,239,233,.4);font-size:.78rem;margin-top:.6rem}
 </style>
 </head>
 <body>
-
-<h1>Tri et resume de documents par IA</h1>
-<p class="sub">L'IA lit vos documents, les classe et extrait les informations cles. Factures, CV, contrats, emails. En quelques secondes.</p>
-
+<h1>Tri et résumé de documents par IA</h1>
+<p class="sub">L'IA lit vos documents, les classe et extrait les informations clés. Factures, CV, contrats, emails. En quelques secondes.</p>
 <div class="container">
 <div class="docs">
-<div class="doc selected" onclick="toggle(this)">
-<div class="doc-icon facture">F</div>
-<div class="doc-info"><div class="doc-name">Facture_2026-0042.pdf</div><div class="doc-meta">Dupont SARL, 4 200 EUR</div></div>
+<div class="doc selected" onclick="toggle(this)"><div class="doc-icon facture">F</div><div class="doc-info"><div class="doc-name">Facture_2026-0042.pdf</div><div class="doc-meta">Dupont SARL — 4 200 €</div></div></div>
+<div class="doc selected" onclick="toggle(this)"><div class="doc-icon cv">CV</div><div class="doc-info"><div class="doc-name">CV_Julie_Martin.pdf</div><div class="doc-meta">Candidate poste négociateur</div></div></div>
+<div class="doc selected" onclick="toggle(this)"><div class="doc-icon contrat">C</div><div class="doc-info"><div class="doc-name">Mandat_vente_Bezons.pdf</div><div class="doc-meta">Mandat exclusif, 3 mois</div></div></div>
+<div class="doc selected" onclick="toggle(this)"><div class="doc-icon email">@</div><div class="doc-info"><div class="doc-name">Email_prospect_urgent.eml</div><div class="doc-meta">Demande de visite T3</div></div></div>
 </div>
-<div class="doc selected" onclick="toggle(this)">
-<div class="doc-icon cv">CV</div>
-<div class="doc-info"><div class="doc-name">CV_Julie_Martin.pdf</div><div class="doc-meta">Candidate poste negociateur</div></div>
-</div>
-<div class="doc selected" onclick="toggle(this)">
-<div class="doc-icon contrat">C</div>
-<div class="doc-info"><div class="doc-name">Mandat_vente_Bezons.pdf</div><div class="doc-meta">Mandat exclusif, 3 mois</div></div>
-</div>
-<div class="doc selected" onclick="toggle(this)">
-<div class="doc-icon email">@</div>
-<div class="doc-info"><div class="doc-name">Email_prospect_urgent.eml</div><div class="doc-meta">Demande de visite T3</div></div>
-</div>
-</div>
-
 <button class="btn" onclick="analyze()">Analyser avec l'IA</button>
-
 <div class="results" id="results">
-<div class="res-card" id="r1">
-<div class="res-head"><div class="res-title">Facture_2026-0042.pdf</div><span class="res-cat compta">Comptabilite</span></div>
-<div class="res-grid">
-<div class="res-field"><div class="label">Client</div><div class="value">Dupont SARL</div></div>
-<div class="res-field"><div class="label">Montant TTC</div><div class="value">4 200 EUR</div></div>
-<div class="res-field"><div class="label">Echeance</div><div class="value">12/06/2026</div></div>
-<div class="res-field"><div class="label">Statut</div><div class="value">A payer</div></div>
+<div class="res-card" id="r1"><div class="res-head"><div class="res-title">Facture_2026-0042.pdf</div><span class="res-cat compta">Comptabilité</span></div><div class="res-grid"><div class="res-field"><div class="label">Client</div><div class="value">Dupont SARL</div></div><div class="res-field"><div class="label">Montant TTC</div><div class="value">4 200 €</div></div><div class="res-field"><div class="label">Échéance</div><div class="value">12/06/2026</div></div><div class="res-field"><div class="label">Statut</div><div class="value">À payer</div></div></div><div class="res-action">Ajouter au suivi comptable</div></div>
+<div class="res-card" id="r2"><div class="res-head"><div class="res-title">CV_Julie_Martin.pdf</div><span class="res-cat rh">Ressources Humaines</span></div><div class="res-grid"><div class="res-field"><div class="label">Poste</div><div class="value">Négociateur immobilier</div></div><div class="res-field"><div class="label">Expérience</div><div class="value">4 ans</div></div><div class="res-field"><div class="label">Disponibilité</div><div class="value">Immédiate</div></div><div class="res-field"><div class="label">Score</div><div class="value">87/100</div></div></div><div class="res-action">Planifier un entretien</div></div>
+<div class="res-card" id="r3"><div class="res-head"><div class="res-title">Mandat_vente_Bezons.pdf</div><span class="res-cat juridique">Juridique</span></div><div class="res-grid"><div class="res-field"><div class="label">Type</div><div class="value">Mandat exclusif</div></div><div class="res-field"><div class="label">Durée</div><div class="value">3 mois</div></div><div class="res-field"><div class="label">Expiration</div><div class="value">15/08/2026</div></div><div class="res-field"><div class="label">Prix mandat</div><div class="value">285 000 €</div></div></div><div class="res-action">Alerte renouvellement dans 60 jours</div></div>
+<div class="res-card" id="r4"><div class="res-head"><div class="res-title">Email_prospect_urgent.eml</div><span class="res-cat comm">Commercial</span></div><div class="res-grid"><div class="res-field"><div class="label">Expéditeur</div><div class="value">Pierre Moreau</div></div><div class="res-field"><div class="label">Demande</div><div class="value">Visite T3 Bezons</div></div><div class="res-field"><div class="label">Urgence</div><div class="value">Haute</div></div><div class="res-field"><div class="label">Budget</div><div class="value">230 000 €</div></div></div><div class="res-action">Rappeler dans l'heure</div></div>
 </div>
-<div class="res-action">Ajouter au suivi comptable</div>
+<div class="summary" id="summary"><p>4 documents analysés, classés et résumés en 3 secondes.</p><p class="small">Plus de tri manuel. L'IA fait le travail pour vous.</p></div>
 </div>
-
-<div class="res-card" id="r2">
-<div class="res-head"><div class="res-title">CV_Julie_Martin.pdf</div><span class="res-cat rh">Ressources Humaines</span></div>
-<div class="res-grid">
-<div class="res-field"><div class="label">Poste</div><div class="value">Negociateur immobilier</div></div>
-<div class="res-field"><div class="label">Experience</div><div class="value">4 ans</div></div>
-<div class="res-field"><div class="label">Disponibilite</div><div class="value">Immediate</div></div>
-<div class="res-field"><div class="label">Score</div><div class="value">87/100</div></div>
-</div>
-<div class="res-action">Planifier un entretien</div>
-</div>
-
-<div class="res-card" id="r3">
-<div class="res-head"><div class="res-title">Mandat_vente_Bezons.pdf</div><span class="res-cat juridique">Juridique</span></div>
-<div class="res-grid">
-<div class="res-field"><div class="label">Type</div><div class="value">Mandat exclusif</div></div>
-<div class="res-field"><div class="label">Duree</div><div class="value">3 mois</div></div>
-<div class="res-field"><div class="label">Expiration</div><div class="value">15/08/2026</div></div>
-<div class="res-field"><div class="label">Prix mandat</div><div class="value">285 000 EUR</div></div>
-</div>
-<div class="res-action">Alerte renouvellement dans 60 jours</div>
-</div>
-
-<div class="res-card" id="r4">
-<div class="res-head"><div class="res-title">Email_prospect_urgent.eml</div><span class="res-cat comm">Commercial</span></div>
-<div class="res-grid">
-<div class="res-field"><div class="label">Expediteur</div><div class="value">Pierre Moreau</div></div>
-<div class="res-field"><div class="label">Demande</div><div class="value">Visite T3 Bezons</div></div>
-<div class="res-field"><div class="label">Urgence</div><div class="value">Haute</div></div>
-<div class="res-field"><div class="label">Budget</div><div class="value">230 000 EUR</div></div>
-</div>
-<div class="res-action">Rappeler dans l'heure</div>
-</div>
-</div>
-
-<div class="summary" id="summary">
-<p>4 documents analyses, classes et resumes en 3 secondes.</p>
-<p class="small">Plus de tri manuel. L'IA fait le travail pour vous.</p>
-</div>
-</div>
-
-<div class="cta-bottom">
-<a href="https://ginoess.github.io">Automatiser le tri de mes documents</a>
-<p>199 euros tout compris. Configuration en 48h.</p>
-</div>
-
+<div class="cta-bottom"><a href="https://ginoess.github.io">Automatiser le tri de mes documents</a><p>199 € tout compris. Configuration en 48h.</p></div>
 <script>
 function toggle(el){el.classList.toggle('selected')}
-function analyze(){
-  document.getElementById('results').style.display='block';
-  ['r1','r2','r3','r4'].forEach((id,i)=>{
-    setTimeout(()=>{document.getElementById(id).classList.add('show')},600*(i+1));
-  });
-  setTimeout(()=>{document.getElementById('summary').style.display='block'},3500);
-}
+function analyze(){document.getElementById('results').style.display='block';['r1','r2','r3','r4'].forEach((id,i)=>{setTimeout(()=>{document.getElementById(id).classList.add('show')},600*(i+1))});setTimeout(()=>{document.getElementById('summary').style.display='block'},3500)}
 </script>
 </body>
 </html>

@@ -3,100 +3,193 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Demo Reseaux Sociaux Autopilote</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<title>Démo Réseaux Sociaux Autopilote</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'DM Sans',sans-serif;background:#F5F5F0;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:2rem 1rem}
-h1{font-size:clamp(1.4rem,3vw,1.8rem);text-align:center;margin-bottom:.5rem;color:#1A1A18}
-.sub{text-align:center;color:#6B6963;margin-bottom:2rem;font-size:.9rem;max-width:500px}
-.container{width:100%;max-width:480px}
-.form-card{background:#fff;border:1px solid #E8E6E1;border-radius:12px;padding:20px;margin-bottom:16px}
-.form-card h3{font-size:14px;margin-bottom:12px}
-.form-row{margin-bottom:10px}
-.form-row label{display:block;font-size:12px;color:#6B6963;margin-bottom:4px}
-.form-row input,.form-row select{width:100%;border:1px solid #E0DED8;border-radius:8px;padding:9px 12px;font-size:13px;font-family:'DM Sans',sans-serif;outline:none;background:#fff}
-.btn{background:#1D6B4F;color:#fff;border:none;border-radius:20px;padding:10px 24px;font-size:13px;font-family:'DM Sans',sans-serif;cursor:pointer;font-weight:500;width:100%}
-.post{background:#fff;border:1px solid #E8E6E1;border-radius:12px;padding:16px;margin-bottom:10px;opacity:0;transform:translateY(12px);transition:all .4s ease}
-.post.show{opacity:1;transform:none}
-.post-head{display:flex;align-items:center;gap:10px;margin-bottom:10px}
-.post-avatar{width:36px;height:36px;border-radius:50%;background:#1D6B4F;display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px;font-weight:700}
-.post-name{font-size:13px;font-weight:700;color:#1A1A18}
-.post-day{font-size:11px;color:#6B6963}
-.post-body{font-size:13px;line-height:1.6;color:#333;margin-bottom:8px}
-.post-tags{font-size:12px;color:#1D6B4F}
-.post-bar{display:flex;gap:16px;padding-top:8px;border-top:1px solid #F0F0EB;font-size:11px;color:#6B6963;margin-top:8px}
-.sched{display:inline-block;background:#E8F5EE;color:#1D6B4F;font-size:10px;font-weight:500;padding:2px 8px;border-radius:8px;margin-left:auto}
-.cta-bottom{margin-top:2rem;text-align:center}
-.cta-bottom a{display:inline-block;background:#1D6B4F;color:#fff;padding:.75rem 2rem;border-radius:50px;font-size:.9rem;text-decoration:none;font-weight:500}
-.cta-bottom p{color:#6B6963;font-size:.8rem;margin-top:.5rem}
+body{font-family:'Inter',sans-serif;background:#0a0a0a;color:#f0efe9;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:2.5rem 1rem}
+h1{font-size:clamp(1.4rem,3vw,1.8rem);text-align:center;margin-bottom:.5rem;letter-spacing:-0.02em}
+.sub{text-align:center;color:rgba(240,239,233,.55);margin-bottom:2.5rem;font-size:.9rem;max-width:480px;line-height:1.7;font-weight:300}
+.container{width:100%;max-width:440px}
+.form-card{background:#111;border:1px solid rgba(255,255,255,.06);border-radius:14px;padding:22px;margin-bottom:22px}
+.form-card h3{font-size:14px;margin-bottom:14px;font-weight:600;letter-spacing:-0.01em}
+.form-row{margin-bottom:12px}
+.form-row label{display:block;font-size:11px;color:rgba(240,239,233,.45);margin-bottom:5px;font-weight:500;letter-spacing:0.02em}
+.form-row input,.form-row select{width:100%;border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:10px 14px;font-size:13px;font-family:'Inter',sans-serif;outline:none;background:#161616;color:#f0efe9;transition:border-color .3s ease}
+.form-row input:focus,.form-row select:focus{border-color:rgba(62,207,142,.4)}
+.btn{background:#3ecf8e;color:#0a0a0a;border:none;border-radius:50px;padding:11px 24px;font-size:13px;font-family:'Inter',sans-serif;cursor:pointer;font-weight:600;width:100%;transition:all .3s ease-in-out;letter-spacing:0.01em}
+.btn:hover{transform:translateY(-2px);box-shadow:0 4px 24px rgba(62,207,142,.3)}
+
+.ig-post{background:#111;border:1px solid rgba(255,255,255,.06);border-radius:14px;overflow:hidden;margin-bottom:14px;opacity:0;transform:translateY(16px);transition:all .5s ease}
+.ig-post.show{opacity:1;transform:none}
+.ig-header{display:flex;align-items:center;gap:10px;padding:14px 16px}
+.ig-avatar{width:34px;height:34px;border-radius:50%;background:#3ecf8e;display:flex;align-items:center;justify-content:center;color:#0a0a0a;font-size:11px;font-weight:700}
+.ig-name{font-size:13px;font-weight:600;color:#f0efe9;letter-spacing:-0.01em}
+.ig-plat{font-size:10px;color:rgba(240,239,233,.4);font-weight:400}
+.ig-sched{margin-left:auto;font-size:10px;font-weight:600;color:#3ecf8e;background:rgba(62,207,142,.1);padding:4px 10px;border-radius:8px;border:1px solid rgba(62,207,142,.15)}
+.ig-photo{width:100%;height:300px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.ig-photo-bg{position:absolute;inset:0}
+.ig-photo-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.1) 0%,rgba(0,0,0,.5) 100%)}
+.ig-photo-text{position:relative;z-index:1;color:#fff;text-align:center;padding:0 28px}
+.ig-photo-text .icon{font-size:36px;margin-bottom:10px}
+.ig-photo-text h4{font-size:18px;font-weight:700;text-shadow:0 2px 8px rgba(0,0,0,.5);margin-bottom:6px;letter-spacing:-0.01em}
+.ig-photo-text p{font-size:12px;opacity:.85;text-shadow:0 1px 4px rgba(0,0,0,.4);font-weight:400}
+.ig-photo-badge{position:absolute;top:14px;left:14px;background:rgba(255,255,255,.95);color:#0a0a0a;font-size:9px;font-weight:700;padding:5px 12px;border-radius:6px;z-index:2;letter-spacing:0.06em;text-transform:uppercase}
+.ig-actions{display:flex;align-items:center;gap:16px;padding:12px 16px}
+.ig-actions svg{width:22px;height:22px;cursor:pointer;fill:none;stroke:rgba(240,239,233,.7);stroke-width:1.8;transition:stroke .3s ease}
+.ig-actions svg:hover{stroke:#f0efe9}
+.ig-actions .save{margin-left:auto}
+.ig-likes{padding:0 16px;font-size:12px;font-weight:700;color:#f0efe9;letter-spacing:-0.01em}
+.ig-caption{padding:8px 16px 16px;font-size:12.5px;line-height:1.65;color:rgba(240,239,233,.7);font-weight:300}
+.ig-caption strong{color:#f0efe9;font-weight:600}
+.ig-tags{color:#3ecf8e;font-size:11.5px;font-weight:400}
+
+.summary{background:rgba(62,207,142,.08);border:1px solid rgba(62,207,142,.15);border-radius:14px;padding:18px;text-align:center;margin-top:16px;display:none;animation:fadeIn .5s ease}
+.summary p{color:#3ecf8e;font-size:14px;font-weight:600;letter-spacing:-0.01em}
+.summary .small{font-size:12px;color:rgba(240,239,233,.5);margin-top:5px;font-weight:400}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.cta-bottom{margin-top:2.5rem;text-align:center}
+.cta-bottom a{display:inline-block;background:#3ecf8e;color:#0a0a0a;padding:.8rem 2rem;border-radius:50px;font-size:.85rem;text-decoration:none;font-weight:600;transition:all .3s ease-in-out}
+.cta-bottom a:hover{transform:translateY(-2px);box-shadow:0 4px 24px rgba(62,207,142,.3)}
+.cta-bottom p{color:rgba(240,239,233,.4);font-size:.78rem;margin-top:.6rem}
 </style>
 </head>
 <body>
 
-<h1>Reseaux sociaux en autopilote</h1>
-<p class="sub">Donnez un theme. L'IA genere 5 posts prets a publier pour la semaine, planifies automatiquement.</p>
+<h1>Réseaux sociaux en autopilote</h1>
+<p class="sub">Donnez un thème. L'IA génère 5 posts visuels prêts à publier, planifiés automatiquement sur vos réseaux.</p>
 
 <div class="container">
 <div class="form-card">
-<h3>Quel est votre theme cette semaine ?</h3>
+<h3>Quel est votre thème cette semaine ?</h3>
 <div class="form-row">
-<label>Theme ou bien a promouvoir</label>
-<input type="text" id="theme" value="Villa T5 avec piscine a Nantes">
+<label>Thème ou bien à promouvoir</label>
+<input type="text" id="theme" value="Villa T5 avec piscine à Nantes">
 </div>
 <div class="form-row">
-<label>Reseau social</label>
+<label>Nom de votre agence</label>
+<input type="text" id="agence" value="Nantes Immobilier">
+</div>
+<div class="form-row">
+<label>Réseau social</label>
 <select id="reseau">
 <option>Instagram</option>
 <option>LinkedIn</option>
 <option>Facebook</option>
 </select>
 </div>
-<button class="btn" onclick="generate()">Generer les posts de la semaine</button>
+<button class="btn" onclick="generate()">Générer les 5 posts de la semaine</button>
 </div>
 
 <div id="posts"></div>
+<div class="summary" id="summary">
+<p>5 posts générés et planifiés pour la semaine.</p>
+<p class="small">Vous n'avez rien fait. L'IA a tout créé, tout planifié.</p>
+</div>
 </div>
 
 <div class="cta-bottom">
-<a href="https://ginoess.github.io">Automatiser mes reseaux</a>
-<p>99 euros par mois. Sans engagement.</p>
+<a href="https://ginoess.github.io">Automatiser mes réseaux</a>
+<p>99 € par mois, sans engagement.</p>
 </div>
 
 <script>
+const gradients = [
+  'linear-gradient(135deg, #1a4a3a 0%, #2d7a5e 40%, #1a4a3a 100%)',
+  'linear-gradient(135deg, #1a2d4a 0%, #2b5c8a 50%, #1a2d4a 100%)',
+  'linear-gradient(135deg, #4a3a1a 0%, #8a6a2b 50%, #4a3a1a 100%)',
+  'linear-gradient(135deg, #3a1a4a 0%, #6a3a8a 50%, #3a1a4a 100%)',
+  'linear-gradient(135deg, #2a2a2a 0%, #4a4a4a 50%, #2a2a2a 100%)'
+];
+
+const icons = ['🏡', '📊', '🎥', '⭐', '📋'];
+
 function generate() {
   const theme = document.getElementById('theme').value;
+  const agence = document.getElementById('agence').value;
   const reseau = document.getElementById('reseau').value;
-  const initials = theme.split(' ').slice(0,2).map(w=>w[0]).join('').toUpperCase();
-  const jours = ['Lundi 9h', 'Mercredi 12h', 'Vendredi 18h', 'Samedi 10h', 'Dimanche 11h'];
+  const initials = agence.split(' ').map(w => w[0]).join('').toUpperCase().slice(0, 2);
+  const jours = ['Lundi 9h00', 'Mercredi 12h00', 'Vendredi 18h00', 'Samedi 10h00', 'Mardi 11h00'];
+  const likes = [47, 83, 126, 64, 91];
 
   const posts = [
-    { body: `Nouveau bien disponible ! ${theme}. Un cadre exceptionnel pour votre prochain projet de vie. Contactez-nous pour une visite privee.`, tags: `#immobilier #${reseau.toLowerCase()} #nouveau` },
-    { body: `Le saviez-vous ? Le marche immobilier evolue chaque mois. Nos experts analysent les tendances pour vous offrir les meilleures opportunites. Comme cette ${theme}.`, tags: `#immobilier #expertise #marche` },
-    { body: `Visite virtuelle disponible pour cette magnifique ${theme}. Decouvrez chaque piece depuis votre canape. Lien en bio pour reserver votre creneau.`, tags: `#visiteVirtuelle #immobilier #innovation` },
-    { body: `Temoignage client : "Grace a l'equipe, nous avons trouve notre maison de reve en moins de 3 semaines." Et si c'etait votre tour ?`, tags: `#temoignage #immobilier #satisfaction` },
-    { body: `Estimation gratuite de votre bien en 48h. Parce que connaitre la valeur de votre propriete, c'est la premiere etape de votre prochain projet. Contactez-nous.`, tags: `#estimation #gratuit #immobilier` }
+    {
+      badge: 'NOUVEAU BIEN',
+      title: theme,
+      subtitle: 'Disponible dès maintenant',
+      caption: `✨ Nouveau bien disponible ! ${theme}. Un cadre exceptionnel pour votre prochain projet de vie.\n\nContactez-nous pour organiser une visite privée.`,
+      tags: '#immobilier #nouveaubien #investissement'
+    },
+    {
+      badge: 'ANALYSE MARCHÉ',
+      title: 'Tendances du marché',
+      subtitle: `Analyse ${new Date().toLocaleDateString('fr-FR', { month: 'long', year: 'numeric' })}`,
+      caption: `📊 Le saviez-vous ? Le marché immobilier évolue chaque mois. Nos experts analysent les tendances pour vous offrir les meilleures opportunités.\n\nDemandez votre estimation gratuite.`,
+      tags: '#immobilier #marché #tendances'
+    },
+    {
+      badge: 'VISITE VIRTUELLE',
+      title: 'Visitez depuis chez vous',
+      subtitle: theme,
+      caption: `🎥 Visite virtuelle disponible ! Découvrez cette magnifique ${theme} depuis votre canapé.\n\nLien en bio pour réserver votre créneau.`,
+      tags: '#visiteVirtuelle #immobilier #innovation'
+    },
+    {
+      badge: 'TÉMOIGNAGE',
+      title: '« Vendus en 3 semaines »',
+      subtitle: 'Merci pour votre confiance',
+      caption: `⭐ Témoignage client : "Grâce à l'équipe de ${agence}, nous avons trouvé notre maison de rêve en moins de 3 semaines."\n\nEt si c'était votre tour ?`,
+      tags: '#témoignage #avis #satisfaction'
+    },
+    {
+      badge: 'ESTIMATION GRATUITE',
+      title: 'Combien vaut votre bien ?',
+      subtitle: 'Résultat en 48h, gratuit',
+      caption: `📋 Estimation gratuite de votre bien en 48h. Connaître la valeur de votre propriété, c'est la première étape de votre prochain projet.\n\nContactez-nous dès maintenant.`,
+      tags: '#estimation #gratuit #immobilier'
+    }
   ];
 
   const container = document.getElementById('posts');
   container.innerHTML = '';
+  document.getElementById('summary').style.display = 'none';
 
   posts.forEach((p, i) => {
     const div = document.createElement('div');
-    div.className = 'post';
+    div.className = 'ig-post';
     div.innerHTML = `
-      <div class="post-head">
-        <div class="post-avatar">${initials}</div>
-        <div><div class="post-name">Votre Agence</div><div class="post-day">${reseau}</div></div>
-        <span class="sched">Planifie ${jours[i]}</span>
+      <div class="ig-header">
+        <div class="ig-avatar">${initials}</div>
+        <div>
+          <div class="ig-name">${agence}</div>
+          <div class="ig-plat">${reseau}</div>
+        </div>
+        <span class="ig-sched">📅 ${jours[i]}</span>
       </div>
-      <div class="post-body">${p.body}</div>
-      <div class="post-tags">${p.tags}</div>
-      <div class="post-bar"><span>Aimer</span><span>Commenter</span><span>Partager</span></div>
+      <div class="ig-photo">
+        <div class="ig-photo-bg" style="background:${gradients[i]}"></div>
+        <div class="ig-photo-overlay"></div>
+        <span class="ig-photo-badge">${p.badge}</span>
+        <div class="ig-photo-text">
+          <div class="icon">${icons[i]}</div>
+          <h4>${p.title}</h4>
+          <p>${p.subtitle}</p>
+        </div>
+      </div>
+      <div class="ig-actions">
+        <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+        <svg class="save" viewBox="0 0 24 24"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+      </div>
+      <div class="ig-likes">${likes[i]} mentions J'aime</div>
+      <div class="ig-caption"><strong>${agence}</strong> ${p.caption.replace(/\n/g, '<br>')}<br><span class="ig-tags">${p.tags}</span></div>
     `;
     container.appendChild(div);
-    setTimeout(() => div.classList.add('show'), 400 * (i + 1));
+    setTimeout(() => div.classList.add('show'), 500 * (i + 1));
   });
+
+  setTimeout(() => { document.getElementById('summary').style.display = 'block'; }, 500 * posts.length + 800);
 }
 </script>
 </body>

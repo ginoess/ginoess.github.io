@@ -3,129 +3,72 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Demo Emails Automatiques</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<title>Démo Emails Automatiques</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'DM Sans',sans-serif;background:#F5F5F0;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:2rem 1rem}
-h1{font-size:clamp(1.4rem,3vw,1.8rem);text-align:center;margin-bottom:.5rem;color:#1A1A18}
-.sub{text-align:center;color:#6B6963;margin-bottom:2rem;font-size:.9rem;max-width:500px}
-.container{width:100%;max-width:580px}
-.step{background:#fff;border:1px solid #E8E6E1;border-radius:12px;padding:20px;margin-bottom:12px;opacity:.3;transform:translateY(10px);transition:all .5s ease}
+body{font-family:'Inter',sans-serif;background:#0a0a0a;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:2.5rem 1rem;color:#f0efe9}
+h1{font-size:clamp(1.4rem,3vw,1.8rem);text-align:center;margin-bottom:.5rem;letter-spacing:-0.02em}
+.sub{text-align:center;color:rgba(240,239,233,.55);margin-bottom:2.5rem;font-size:.9rem;max-width:500px;line-height:1.7;font-weight:300}
+.container{width:100%;max-width:560px}
+.step{background:#111;border:1px solid rgba(255,255,255,.06);border-radius:14px;padding:20px;margin-bottom:12px;opacity:.2;transform:translateY(10px);transition:all .5s ease}
 .step.active{opacity:1;transform:none}
-.step-head{display:flex;align-items:center;gap:10px;margin-bottom:10px}
-.step-num{width:28px;height:28px;border-radius:50%;background:#E8F5EE;color:#1D6B4F;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center}
-.step-label{font-size:13px;color:#6B6963}
-.step-time{margin-left:auto;font-size:11px;color:#1D6B4F;background:#E8F5EE;padding:3px 10px;border-radius:10px;font-weight:500}
-.email-box{background:#FAFAF8;border:1px solid #E8E6E1;border-radius:8px;padding:14px;font-size:13px;line-height:1.6;color:#1A1A18}
-.email-to{font-size:11px;color:#6B6963;margin-bottom:4px}
-.email-subject{font-weight:700;margin-bottom:8px;font-size:14px}
-.email-body{color:#444}
-.form-card{background:#fff;border:1px solid #E8E6E1;border-radius:12px;padding:20px;margin-bottom:16px}
-.form-card h3{font-size:14px;margin-bottom:12px;color:#1A1A18}
+.step-head{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.step-num{width:28px;height:28px;border-radius:50%;background:rgba(62,207,142,.12);color:#3ecf8e;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;border:1px solid rgba(62,207,142,.2)}
+.step-label{font-size:13px;color:rgba(240,239,233,.6);font-weight:500}
+.step-time{margin-left:auto;font-size:11px;color:#3ecf8e;background:rgba(62,207,142,.1);padding:4px 10px;border-radius:10px;font-weight:600;border:1px solid rgba(62,207,142,.15)}
+.email-box{background:#161616;border:1px solid rgba(255,255,255,.04);border-radius:10px;padding:16px;font-size:13px;line-height:1.7}
+.email-to{font-size:11px;color:rgba(240,239,233,.4);margin-bottom:6px;font-weight:400}
+.email-subject{font-weight:700;margin-bottom:10px;font-size:14px;color:#f0efe9;letter-spacing:-0.01em}
+.email-body{color:rgba(240,239,233,.7);font-weight:300}
+.form-card{background:#111;border:1px solid rgba(255,255,255,.06);border-radius:14px;padding:22px;margin-bottom:18px}
+.form-card h3{font-size:14px;margin-bottom:14px;font-weight:600}
 .form-row{margin-bottom:10px}
-.form-row label{display:block;font-size:12px;color:#6B6963;margin-bottom:4px}
-.form-row input{width:100%;border:1px solid #E0DED8;border-radius:8px;padding:9px 12px;font-size:13px;font-family:'DM Sans',sans-serif;outline:none}
-.form-row input:focus{border-color:#1D6B4F}
-.btn{background:#1D6B4F;color:#fff;border:none;border-radius:20px;padding:10px 24px;font-size:13px;font-family:'DM Sans',sans-serif;cursor:pointer;font-weight:500;width:100%}
-.btn:hover{opacity:.9}
-.badge{display:inline-block;background:#E8F5EE;color:#1D6B4F;font-size:11px;font-weight:500;padding:3px 10px;border-radius:10px}
-.result{background:#E8F5EE;border-radius:12px;padding:16px;margin-top:16px;text-align:center;display:none;animation:fadeIn .5s ease}
-.result p{color:#1D6B4F;font-size:14px;font-weight:500}
-.result .small{font-size:12px;color:#6B6963;margin-top:4px;font-weight:400}
+.form-row label{display:block;font-size:11px;color:rgba(240,239,233,.45);margin-bottom:5px;font-weight:500;letter-spacing:0.02em}
+.form-row input{width:100%;border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:10px 14px;font-size:13px;font-family:'Inter',sans-serif;outline:none;background:#161616;color:#f0efe9;transition:border-color .3s ease}
+.form-row input:focus{border-color:rgba(62,207,142,.4)}
+.btn{background:#3ecf8e;color:#0a0a0a;border:none;border-radius:50px;padding:11px 24px;font-size:13px;font-family:'Inter',sans-serif;cursor:pointer;font-weight:600;width:100%;transition:all .3s ease}
+.btn:hover{transform:translateY(-2px);box-shadow:0 4px 24px rgba(62,207,142,.3)}
+.badge{display:inline-block;background:rgba(62,207,142,.12);color:#3ecf8e;font-size:10px;font-weight:600;padding:3px 10px;border-radius:10px;margin-top:6px;border:1px solid rgba(62,207,142,.2)}
+.result{background:rgba(62,207,142,.08);border:1px solid rgba(62,207,142,.15);border-radius:14px;padding:18px;margin-top:18px;text-align:center;display:none;animation:fadeIn .5s ease}
+.result p{color:#3ecf8e;font-size:14px;font-weight:600}
+.result .small{font-size:12px;color:rgba(240,239,233,.5);margin-top:5px;font-weight:400}
 @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
-.cta-bottom{margin-top:2rem;text-align:center}
-.cta-bottom a{display:inline-block;background:#1D6B4F;color:#fff;padding:.75rem 2rem;border-radius:50px;font-size:.9rem;text-decoration:none;font-weight:500}
-.cta-bottom p{color:#6B6963;font-size:.8rem;margin-top:.5rem}
+.cta-bottom{margin-top:2.5rem;text-align:center}
+.cta-bottom a{display:inline-block;background:#3ecf8e;color:#0a0a0a;padding:.8rem 2rem;border-radius:50px;font-size:.85rem;text-decoration:none;font-weight:600;transition:all .3s ease}
+.cta-bottom a:hover{transform:translateY(-2px);box-shadow:0 4px 24px rgba(62,207,142,.3)}
+.cta-bottom p{color:rgba(240,239,233,.4);font-size:.78rem;margin-top:.6rem}
 </style>
 </head>
 <body>
-
-<h1>Emails automatiques personnalises</h1>
-<p class="sub">Un prospect remplit votre formulaire. En 2 secondes, il recoit un email personnalise. Sans que vous leviez le petit doigt.</p>
-
+<h1>Emails automatiques personnalisés</h1>
+<p class="sub">Un prospect remplit votre formulaire. En 2 secondes, il reçoit un email personnalisé. Sans que vous leviez le petit doigt.</p>
 <div class="container">
 <div class="form-card">
 <h3>Simulez un prospect qui vous contacte</h3>
-<div class="form-row">
-<label>Nom du prospect</label>
-<input type="text" id="nom" value="Marie Dupont">
-</div>
-<div class="form-row">
-<label>Email</label>
-<input type="text" id="email" value="marie.dupont@gmail.com">
-</div>
-<div class="form-row">
-<label>Message</label>
-<input type="text" id="msg" value="Je cherche un T3 a Bezons, budget 250k">
-</div>
+<div class="form-row"><label>Nom du prospect</label><input type="text" id="nom" value="Marie Dupont"></div>
+<div class="form-row"><label>Email</label><input type="text" id="email" value="marie.dupont@gmail.com"></div>
+<div class="form-row"><label>Message</label><input type="text" id="msg" value="Je cherche un T3 à Bezons, budget 250k"></div>
 <button class="btn" onclick="launch()">Simuler l'envoi du formulaire</button>
 </div>
-
-<div id="s1" class="step">
-<div class="step-head">
-<div class="step-num">1</div>
-<div class="step-label">Formulaire recu</div>
-<div class="step-time">instant</div>
+<div id="s1" class="step"><div class="step-head"><div class="step-num">1</div><div class="step-label">Formulaire reçu</div><div class="step-time">instant</div></div><div class="email-box"><div class="email-to">Nouveau contact depuis votre site web</div><div class="email-body" id="r1"></div></div></div>
+<div id="s2" class="step"><div class="step-head"><div class="step-num">2</div><div class="step-label">Email automatique envoyé</div><div class="step-time">2 secondes</div></div><div class="email-box"><div class="email-to" id="r2to"></div><div class="email-subject" id="r2sub"></div><div class="email-body" id="r2body"></div></div></div>
+<div id="s3" class="step"><div class="step-head"><div class="step-num">3</div><div class="step-label">Notification agence</div><div class="step-time">3 secondes</div></div><div class="email-box"><div class="email-to">Alerte pour votre équipe</div><div class="email-body" id="r3"></div></div></div>
+<div class="result" id="result"><p>Le prospect a reçu une réponse en 2 secondes.</p><p class="small">Vous n'avez rien fait. L'IA a tout géré.</p></div>
 </div>
-<div class="email-box">
-<div class="email-to">Nouveau contact depuis votre site web</div>
-<div class="email-body" id="r1"></div>
-</div>
-</div>
-
-<div id="s2" class="step">
-<div class="step-head">
-<div class="step-num">2</div>
-<div class="step-label">Email automatique envoye</div>
-<div class="step-time">2 secondes</div>
-</div>
-<div class="email-box">
-<div class="email-to" id="r2to"></div>
-<div class="email-subject" id="r2sub"></div>
-<div class="email-body" id="r2body"></div>
-</div>
-</div>
-
-<div id="s3" class="step">
-<div class="step-head">
-<div class="step-num">3</div>
-<div class="step-label">Notification agence</div>
-<div class="step-time">3 secondes</div>
-</div>
-<div class="email-box">
-<div class="email-to">Alerte pour votre equipe</div>
-<div class="email-body" id="r3"></div>
-</div>
-</div>
-
-<div class="result" id="result">
-<p>Le prospect a recu une reponse en 2 secondes.</p>
-<p class="small">Vous n'avez rien fait. L'IA a tout gere.</p>
-</div>
-</div>
-
-<div class="cta-bottom">
-<a href="https://ginoess.github.io">Installer sur mon site</a>
-<p>99 euros tout compris. Configuration en 48h.</p>
-</div>
-
+<div class="cta-bottom"><a href="https://ginoess.github.io">Installer sur mon site</a><p>99 € tout compris. Configuration en 48h.</p></div>
 <script>
-function launch() {
-  const nom = document.getElementById('nom').value;
-  const email = document.getElementById('email').value;
-  const msg = document.getElementById('msg').value;
-
-  document.getElementById('r1').innerHTML = `<strong>${nom}</strong> (${email})<br>"${msg}"`;
-  document.getElementById('r2to').textContent = `A : ${email}`;
-  document.getElementById('r2sub').textContent = `${nom}, votre demande a bien ete recue`;
-  document.getElementById('r2body').innerHTML = `Bonjour ${nom},<br><br>Merci pour votre message. J'ai bien pris note de votre recherche :<br><br>"${msg}"<br><br>Un conseiller de notre equipe revient vers vous dans les 2 heures avec des propositions adaptees.<br><br>Cordialement,<br>L'equipe`;
-  document.getElementById('r3').innerHTML = `Nouveau prospect qualifie :<br><strong>${nom}</strong> cherche : "${msg}"<br>Contact : ${email}<br><br><span class="badge">A rappeler aujourd'hui</span>`;
-
-  setTimeout(() => { document.getElementById('s1').classList.add('active'); }, 300);
-  setTimeout(() => { document.getElementById('s2').classList.add('active'); }, 1500);
-  setTimeout(() => { document.getElementById('s3').classList.add('active'); }, 2800);
-  setTimeout(() => { document.getElementById('result').style.display = 'block'; }, 3800);
+function launch(){
+const nom=document.getElementById('nom').value,email=document.getElementById('email').value,msg=document.getElementById('msg').value;
+document.getElementById('r1').innerHTML=`<strong>${nom}</strong> (${email})<br>"${msg}"`;
+document.getElementById('r2to').textContent=`À : ${email}`;
+document.getElementById('r2sub').textContent=`${nom}, votre demande a bien été reçue`;
+document.getElementById('r2body').innerHTML=`Bonjour ${nom},<br><br>Merci pour votre message. J'ai bien pris note de votre recherche :<br><br>"${msg}"<br><br>Un conseiller de notre équipe revient vers vous dans les 2 heures avec des propositions adaptées.<br><br>Cordialement,<br>L'équipe`;
+document.getElementById('r3').innerHTML=`Nouveau prospect qualifié :<br><strong>${nom}</strong> cherche : "${msg}"<br>Contact : ${email}<br><br><span class="badge">À rappeler aujourd'hui</span>`;
+setTimeout(()=>{document.getElementById('s1').classList.add('active')},300);
+setTimeout(()=>{document.getElementById('s2').classList.add('active')},1500);
+setTimeout(()=>{document.getElementById('s3').classList.add('active')},2800);
+setTimeout(()=>{document.getElementById('result').style.display='block'},3800);
 }
 </script>
 </body>
