@@ -3,347 +3,152 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Gino.ia — Automatisation IA pour PME</title>
+<title>Gino.ia — Automatisation IA pour PME | 14 jours gratuits</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-:root{
-  --bg:#0a0a0a;
-  --bg2:#111111;
-  --bg3:#161616;
-  --fg:#f0efe9;
-  --fg2:rgba(240,239,233,.55);
-  --fg3:rgba(240,239,233,.35);
-  --accent:#3ecf8e;
-  --accent2:rgba(62,207,142,.12);
-  --amber:#e8a849;
-  --amber2:rgba(232,168,73,.12);
-  --border:rgba(255,255,255,.06);
-  --border2:rgba(255,255,255,.1);
-  --glass:rgba(17,17,17,.7);
-  --glass-border:rgba(255,255,255,.08);
-  --radius:14px;
-  --max:800px;
-}
-body{
-  font-family:'Inter',sans-serif;
-  background:var(--bg);
-  color:var(--fg);
-  -webkit-font-smoothing:antialiased;
-  -moz-osx-font-smoothing:grayscale;
-  letter-spacing:-0.01em;
-  line-height:1.7;
-  background-image:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(62,207,142,.06) 0%,transparent 60%),
-                    radial-gradient(ellipse 60% 50% at 80% 100%,rgba(232,168,73,.04) 0%,transparent 50%);
-  background-attachment:fixed;
-}
-a{color:inherit;text-decoration:none}
-::selection{background:rgba(62,207,142,.25);color:#fff}
-
-.nav{
-  position:sticky;top:0;z-index:100;
-  background:var(--glass);
-  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
-  border-bottom:1px solid var(--glass-border);
-}
+:root{--bg:#0a0a0a;--bg2:#111111;--bg3:#161616;--fg:#f0efe9;--fg2:rgba(240,239,233,.55);--fg3:rgba(240,239,233,.35);--accent:#3ecf8e;--accent2:rgba(62,207,142,.12);--amber:#e8a849;--amber2:rgba(232,168,73,.12);--border:rgba(255,255,255,.06);--border2:rgba(255,255,255,.1);--glass:rgba(17,17,17,.7);--glass-border:rgba(255,255,255,.08);--radius:14px;--max:800px}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--fg);-webkit-font-smoothing:antialiased;letter-spacing:-0.01em;line-height:1.7;background-image:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(62,207,142,.06) 0%,transparent 60%),radial-gradient(ellipse 60% 50% at 80% 100%,rgba(232,168,73,.04) 0%,transparent 50%);background-attachment:fixed}
+a{color:inherit;text-decoration:none}::selection{background:rgba(62,207,142,.25);color:#fff}
+.nav{position:sticky;top:0;z-index:100;background:var(--glass);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--glass-border)}
 .nav-inner{display:flex;justify-content:space-between;align-items:center;max-width:var(--max);margin:0 auto;padding:1rem 2rem}
 .nav-logo{font-family:'Instrument Serif',serif;font-size:1.4rem;color:var(--fg);letter-spacing:-0.02em}
-.nav-cta{
-  background:var(--accent);color:var(--bg);
-  padding:0.55rem 1.4rem;border-radius:50px;
-  font-size:0.8rem;font-weight:600;letter-spacing:0.01em;
-  transition:all .3s ease-in-out;
-}
+.nav-cta{background:var(--accent);color:var(--bg);padding:0.55rem 1.4rem;border-radius:50px;font-size:0.8rem;font-weight:600;transition:all .3s ease-in-out}
 .nav-cta:hover{transform:translateY(-2px);box-shadow:0 4px 24px rgba(62,207,142,.3)}
-
 .hero{max-width:var(--max);margin:0 auto;padding:6rem 2rem 5rem;text-align:center}
-.hero-badge{
-  display:inline-block;
-  background:var(--accent2);color:var(--accent);
-  font-size:0.75rem;font-weight:600;letter-spacing:0.04em;
-  padding:0.4rem 1.1rem;border-radius:50px;margin-bottom:2rem;
-  border:1px solid rgba(62,207,142,.15);
-}
-.hero h1{
-  font-family:'Instrument Serif',serif;
-  font-size:clamp(2.4rem,5.5vw,3.6rem);
-  line-height:1.1;letter-spacing:-0.03em;font-weight:400;
-  max-width:680px;margin:0 auto 1.5rem;
-  color:var(--fg);
-}
+.hero-badge{display:inline-block;background:var(--accent2);color:var(--accent);font-size:0.75rem;font-weight:600;letter-spacing:0.04em;padding:0.4rem 1.1rem;border-radius:50px;margin-bottom:2rem;border:1px solid rgba(62,207,142,.15)}
+.hero h1{font-family:'Instrument Serif',serif;font-size:clamp(2.4rem,5.5vw,3.6rem);line-height:1.1;letter-spacing:-0.03em;font-weight:400;max-width:700px;margin:0 auto 1.5rem;color:var(--fg)}
 .hero h1 em{font-style:italic;color:var(--accent)}
-.hero p{font-size:1.05rem;color:var(--fg2);max-width:500px;margin:0 auto 2.5rem;line-height:1.75;font-weight:300}
-.hero-cta{
-  display:inline-block;
-  background:var(--fg);color:var(--bg);
-  padding:0.9rem 2.4rem;border-radius:50px;
-  font-size:0.9rem;font-weight:600;letter-spacing:0.01em;
-  transition:all .3s ease-in-out;
-}
+.hero p{font-size:1.05rem;color:var(--fg2);max-width:520px;margin:0 auto 2.5rem;line-height:1.75;font-weight:300}
+.hero-cta{display:inline-block;background:var(--fg);color:var(--bg);padding:0.9rem 2.4rem;border-radius:50px;font-size:0.9rem;font-weight:600;transition:all .3s ease-in-out}
 .hero-cta:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(240,239,233,.15)}
 .hero-sub{font-size:0.78rem;color:var(--fg3);margin-top:1rem;font-weight:400}
-
 .proof{border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:2.5rem 2rem}
 .proof-inner{max-width:var(--max);margin:0 auto;display:flex;justify-content:center;gap:3.5rem;flex-wrap:wrap}
 .proof-item{font-size:0.82rem;color:var(--fg2);display:flex;align-items:center;gap:0.6rem;font-weight:400}
 .proof-item strong{font-size:1.2rem;color:var(--fg);font-weight:700;letter-spacing:-0.02em}
-
-.services{max-width:var(--max);margin:0 auto;padding:6rem 2rem}
-.section-label{
-  font-size:0.7rem;text-transform:uppercase;
-  letter-spacing:0.14em;color:var(--accent);
-  font-weight:600;margin-bottom:1rem;
-}
-.section-title{
-  font-family:'Instrument Serif',serif;
-  font-size:clamp(1.7rem,3.5vw,2.3rem);
-  margin-bottom:0.75rem;font-weight:400;
-  letter-spacing:-0.02em;color:var(--fg);
-}
-.section-desc{color:var(--fg2);max-width:480px;line-height:1.75;margin-bottom:3rem;font-weight:300;font-size:0.95rem}
+.free-banner{max-width:var(--max);margin:0 auto;padding:3rem 2rem}
+.free-box{background:linear-gradient(135deg,rgba(62,207,142,.08) 0%,rgba(62,207,142,.03) 100%);border:1px solid rgba(62,207,142,.15);border-radius:var(--radius);padding:2.5rem;text-align:center}
+.free-box h2{font-family:'Instrument Serif',serif;font-size:clamp(1.5rem,3vw,2rem);font-weight:400;letter-spacing:-0.02em;margin-bottom:0.75rem}
+.free-box h2 em{color:var(--accent);font-style:italic}
+.free-box>p{color:var(--fg2);font-size:0.92rem;max-width:500px;margin:0 auto 1.5rem;line-height:1.75;font-weight:300}
+.free-steps{display:flex;justify-content:center;gap:2rem;flex-wrap:wrap;margin-top:1.5rem}
+.free-step{text-align:center;max-width:180px}
+.free-step-num{width:32px;height:32px;border-radius:50%;background:var(--accent);color:var(--bg);font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;margin:0 auto 0.75rem}
+.free-step h4{font-size:0.85rem;font-weight:600;margin-bottom:0.3rem;color:var(--fg)}
+.free-step p{font-size:0.78rem;color:var(--fg2);line-height:1.6;font-weight:300}
+.services{max-width:var(--max);margin:0 auto;padding:5rem 2rem}
+.section-label{font-size:0.7rem;text-transform:uppercase;letter-spacing:0.14em;color:var(--accent);font-weight:600;margin-bottom:1rem}
+.section-title{font-family:'Instrument Serif',serif;font-size:clamp(1.7rem,3.5vw,2.3rem);margin-bottom:0.75rem;font-weight:400;letter-spacing:-0.02em;color:var(--fg)}
+.section-desc{color:var(--fg2);max-width:500px;line-height:1.75;margin-bottom:3rem;font-weight:300;font-size:0.95rem}
 .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1rem}
-.card{
-  background:var(--bg2);
-  border:1px solid var(--border);
-  border-radius:var(--radius);padding:1.75rem;
-  transition:all .3s ease-in-out;
-  position:relative;overflow:hidden;
-}
+.card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:1.75rem;transition:all .3s ease-in-out;position:relative;overflow:hidden}
 .card:hover{transform:translateY(-3px);border-color:var(--border2);box-shadow:0 12px 40px rgba(0,0,0,.3)}
-.card-icon{
-  width:42px;height:42px;border-radius:10px;
-  display:flex;align-items:center;justify-content:center;
-  font-size:1.15rem;margin-bottom:1.25rem;
-}
+.card-icon{width:42px;height:42px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.15rem;margin-bottom:1.25rem}
 .card h3{font-size:1rem;font-weight:600;margin-bottom:0.5rem;letter-spacing:-0.01em;color:var(--fg)}
 .card p{font-size:0.85rem;color:var(--fg2);line-height:1.7;margin-bottom:1.25rem;font-weight:300}
 .card-price{display:flex;align-items:baseline;gap:0.35rem}
 .card-price strong{font-size:1.4rem;font-weight:700;letter-spacing:-0.02em;color:var(--fg)}
 .card-price span{font-size:0.8rem;color:var(--fg3)}
-.card-tag{
-  position:absolute;top:1rem;right:1rem;
-  font-size:0.65rem;font-weight:600;
-  padding:0.2rem 0.6rem;border-radius:50px;
-  letter-spacing:0.02em;
-}
-.demo-link{
-  display:inline-block;margin-top:0.85rem;
-  font-size:0.78rem;color:var(--accent);font-weight:500;
-  text-decoration:none;
-  transition:all .3s ease-in-out;
-  letter-spacing:0.01em;
-}
+.card-free{display:inline-block;margin-top:0.6rem;font-size:0.75rem;color:var(--accent);font-weight:600;background:rgba(62,207,142,.1);padding:3px 10px;border-radius:8px;border:1px solid rgba(62,207,142,.15)}
+.card-tag{position:absolute;top:1rem;right:1rem;font-size:0.65rem;font-weight:600;padding:0.2rem 0.6rem;border-radius:50px;letter-spacing:0.02em}
+.demo-link{display:inline-block;margin-top:0.6rem;font-size:0.78rem;color:var(--accent);font-weight:500;text-decoration:none;transition:all .3s ease-in-out;letter-spacing:0.01em}
 .demo-link:hover{transform:translateX(3px);opacity:.8}
-
-.ic-green{background:var(--accent2);color:var(--accent)}
-.ic-amber{background:var(--amber2);color:var(--amber)}
-.ic-gray{background:rgba(255,255,255,.06);color:var(--fg2)}
-.tag-pop{background:var(--accent2);color:var(--accent);border:1px solid rgba(62,207,142,.2)}
-.tag-rec{background:var(--amber2);color:var(--amber);border:1px solid rgba(232,168,73,.2)}
-
+.ic-green{background:var(--accent2);color:var(--accent)}.ic-amber{background:var(--amber2);color:var(--amber)}.ic-gray{background:rgba(255,255,255,.06);color:var(--fg2)}
+.tag-pop{background:var(--accent2);color:var(--accent);border:1px solid rgba(62,207,142,.2)}.tag-rec{background:var(--amber2);color:var(--amber);border:1px solid rgba(232,168,73,.2)}
 .how{max-width:var(--max);margin:0 auto;padding:5rem 2rem 6rem}
 .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:2.5rem;margin-top:3rem}
-.step{position:relative}
-.step-num{
-  font-family:'Instrument Serif',serif;
-  font-size:3.5rem;color:var(--accent);opacity:.15;
-  line-height:1;margin-bottom:0.75rem;
-}
+.step{position:relative}.step-num{font-family:'Instrument Serif',serif;font-size:3.5rem;color:var(--accent);opacity:.15;line-height:1;margin-bottom:0.75rem}
 .step h4{font-size:0.95rem;font-weight:600;margin-bottom:0.5rem;letter-spacing:-0.01em;color:var(--fg)}
 .step p{font-size:0.82rem;color:var(--fg2);line-height:1.7;font-weight:300}
-
 .compare{max-width:var(--max);margin:0 auto;padding:4rem 2rem 5rem}
-.compare-box{
-  background:var(--bg2);
-  border:1px solid var(--border);
-  border-radius:var(--radius);overflow:hidden;
-}
-.compare-row{
-  display:grid;grid-template-columns:1.5fr 1fr 1fr;
-  padding:1rem 1.75rem;font-size:0.85rem;
-  align-items:center;
-  transition:background .3s ease-in-out;
-}
-.compare-row:nth-child(even){background:rgba(255,255,255,.02)}
-.compare-row:hover{background:rgba(255,255,255,.04)}
-.compare-head{
-  background:var(--bg3);
-  font-weight:600;font-size:0.8rem;
-  letter-spacing:0.02em;color:var(--fg2);
-}
-.compare-head span:last-child{color:var(--accent)}
-.val-them{color:var(--fg3);font-weight:400}
-.val-you{color:var(--accent);font-weight:600}
-
-.cta-section{
-  border-top:1px solid var(--border);
-  padding:6rem 2rem;text-align:center;
-}
-.cta-section h2{
-  font-family:'Instrument Serif',serif;
-  font-size:clamp(1.7rem,3.5vw,2.4rem);
-  font-weight:400;margin-bottom:1rem;
-  letter-spacing:-0.02em;color:var(--fg);
-}
-.cta-section p{color:var(--fg2);max-width:440px;margin:0 auto 2.5rem;line-height:1.75;font-size:0.92rem;font-weight:300}
-.cta-btn{
-  display:inline-block;
-  background:var(--accent);color:var(--bg);
-  padding:0.9rem 2.5rem;border-radius:50px;
-  font-size:0.9rem;font-weight:600;
-  letter-spacing:0.01em;
-  transition:all .3s ease-in-out;
-}
+.compare-box{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden}
+.compare-row{display:grid;grid-template-columns:1.5fr 1fr 1fr;padding:1rem 1.75rem;font-size:0.85rem;align-items:center;transition:background .3s ease-in-out}
+.compare-row:nth-child(even){background:rgba(255,255,255,.02)}.compare-row:hover{background:rgba(255,255,255,.04)}
+.compare-head{background:var(--bg3);font-weight:600;font-size:0.8rem;letter-spacing:0.02em;color:var(--fg2)}
+.compare-head span:last-child{color:var(--accent)}.val-them{color:var(--fg3);font-weight:400}.val-you{color:var(--accent);font-weight:600}
+.guarantee{max-width:var(--max);margin:0 auto;padding:0 2rem 5rem}
+.guarantee-box{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:2.5rem;text-align:center}
+.guarantee-icon{font-size:2.5rem;margin-bottom:1rem}
+.guarantee-box h3{font-size:1.2rem;font-weight:600;margin-bottom:0.75rem;letter-spacing:-0.01em}
+.guarantee-box p{color:var(--fg2);font-size:0.9rem;max-width:480px;margin:0 auto;line-height:1.75;font-weight:300}
+.guarantee-box p strong{color:var(--fg);font-weight:600}
+.cta-section{border-top:1px solid var(--border);padding:6rem 2rem;text-align:center}
+.cta-section h2{font-family:'Instrument Serif',serif;font-size:clamp(1.7rem,3.5vw,2.4rem);font-weight:400;margin-bottom:1rem;letter-spacing:-0.02em;color:var(--fg)}
+.cta-section p{color:var(--fg2);max-width:460px;margin:0 auto 1rem;line-height:1.75;font-size:0.92rem;font-weight:300}
+.cta-section .free-reminder{color:var(--accent);font-size:0.85rem;font-weight:600;margin-bottom:2rem}
+.cta-btn{display:inline-block;background:var(--accent);color:var(--bg);padding:0.9rem 2.5rem;border-radius:50px;font-size:0.9rem;font-weight:600;letter-spacing:0.01em;transition:all .3s ease-in-out}
 .cta-btn:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(62,207,142,.3)}
-
-.footer{
-  max-width:var(--max);margin:0 auto;padding:2rem;
-  text-align:center;font-size:0.75rem;color:var(--fg3);
-  border-top:1px solid var(--border);
-  letter-spacing:0.02em;
-}
-
+.footer{max-width:var(--max);margin:0 auto;padding:2rem;text-align:center;font-size:0.75rem;color:var(--fg3);border-top:1px solid var(--border);letter-spacing:0.02em}
 .card-featured{border:1px solid rgba(62,207,142,.2);background:linear-gradient(180deg,rgba(62,207,142,.04) 0%,var(--bg2) 100%)}
-
-@media(max-width:640px){
-.nav-inner{padding:0.85rem 1.25rem}
-.hero{padding:4rem 1.25rem 3rem}
-.services,.how,.compare{padding-left:1.25rem;padding-right:1.25rem}
-.compare-row{grid-template-columns:1.2fr 1fr 1fr;padding:0.75rem 1rem;font-size:0.78rem}
-.proof-inner{gap:1.5rem}
-.cards{grid-template-columns:1fr}
-}
+@media(max-width:640px){.nav-inner{padding:0.85rem 1.25rem}.hero{padding:4rem 1.25rem 3rem}.services,.how,.compare,.free-banner,.guarantee{padding-left:1.25rem;padding-right:1.25rem}.compare-row{grid-template-columns:1.2fr 1fr 1fr;padding:0.75rem 1rem;font-size:0.78rem}.proof-inner{gap:1.5rem}.cards{grid-template-columns:1fr}.free-steps{flex-direction:column;align-items:center}}
 </style>
 </head>
 <body>
-
-<nav class="nav">
-<div class="nav-inner">
-<div class="nav-logo">Gino.ia</div>
-<a href="https://www.linkedin.com/in/gino-essono-menié-0592113a6/" class="nav-cta">Me contacter</a>
-</div>
-</nav>
-
+<nav class="nav"><div class="nav-inner"><div class="nav-logo">Gino.ia</div><a href="https://www.linkedin.com/in/gino-essono-menié-0592113a6/" class="nav-cta">Essai gratuit 14 jours</a></div></nav>
 <section class="hero">
-<div class="hero-badge">Automatisation IA pour PME</div>
+<div class="hero-badge">✦ 14 jours gratuits, sans engagement</div>
 <h1>Vos tâches répétitives vous coûtent <em>des heures</em> chaque semaine</h1>
 <p>Je les supprime. Relances clients, emails, chatbot, réseaux sociaux — l'IA s'en occupe, vous vous concentrez sur votre métier.</p>
-<a href="https://www.linkedin.com/in/gino-essono-menié-0592113a6/" class="hero-cta">Réserver un appel de 10 min</a>
-<p class="hero-sub">Gratuit, sans engagement, on regarde ensemble ce qui peut être automatisé.</p>
+<a href="https://www.linkedin.com/in/gino-essono-menié-0592113a6/" class="hero-cta">Démarrer l'essai gratuit</a>
+<p class="hero-sub">Je configure tout en 48h. Vous testez pendant 14 jours. Si ça ne vous convient pas, je retire tout. Zéro risque.</p>
 </section>
-
-<section class="proof">
-<div class="proof-inner">
-<div class="proof-item"><strong>8–10h</strong> gagnées par semaine en moyenne</div>
-<div class="proof-item"><strong>24/7</strong> vos clients reçoivent une réponse</div>
-<div class="proof-item"><strong>€99</strong> la première automatisation</div>
-</div>
-</section>
-
+<section class="proof"><div class="proof-inner">
+<div class="proof-item"><strong>14 jours</strong> d'essai gratuit</div>
+<div class="proof-item"><strong>48h</strong> pour tout configurer</div>
+<div class="proof-item"><strong>0 €</strong> si ça ne vous plaît pas</div>
+</div></section>
+<section class="free-banner"><div class="free-box">
+<h2>Testez <em>tout</em> pendant 14 jours. Gardez ce qui marche.</h2>
+<p>J'installe le pack complet sur votre site et vos outils. Vous voyez les résultats en temps réel. Au bout de 14 jours, vous choisissez ce que vous gardez. Vous ne payez que ce que vous gardez.</p>
+<div class="free-steps">
+<div class="free-step"><div class="free-step-num">1</div><h4>J'installe tout</h4><p>Chatbot, emails, relances, réseaux sociaux. Le pack complet, gratuitement.</p></div>
+<div class="free-step"><div class="free-step-num">2</div><h4>Vous testez 14 jours</h4><p>Vous voyez les résultats : contacts capturés, emails envoyés, posts publiés.</p></div>
+<div class="free-step"><div class="free-step-num">3</div><h4>Vous choisissez</h4><p>Vous gardez ce qui vous plaît. Vous ne payez rien pour le reste. Je le retire.</p></div>
+</div></div></section>
 <section class="services">
-<div class="section-label">Services</div>
-<div class="section-title">Ce que j'automatise pour vous</div>
+<div class="section-label">Inclus dans l'essai gratuit</div>
+<div class="section-title">Tout est installé. Vous ne gardez que ce qui marche.</div>
 <p class="section-desc">Chaque service est opérationnel en 48h. Vous n'avez rien à installer, rien à configurer. Je m'occupe de tout.</p>
 <div class="cards">
-
-<div class="card">
-<span class="card-tag tag-pop">populaire</span>
-<div class="card-icon ic-green">💬</div>
-<h3>Chatbot IA pour votre site</h3>
-<p>Vos clients posent une question — l'IA répond instantanément, 24h/24, avec vos informations. Fini les demandes qui restent sans réponse.</p>
-<div class="card-price"><strong>€149</strong><span>setup + €49/mois</span></div>
-<a href="demo-chatbot.html" class="demo-link">Voir une démonstration →</a>
-</div>
-
-<div class="card">
-<div class="card-icon ic-amber">✉️</div>
-<h3>Emails automatiques personnalisés</h3>
-<p>Un prospect remplit votre formulaire — il reçoit un email sur-mesure généré par IA dans la minute. Relance à J+3 et J+7 incluse.</p>
-<div class="card-price"><strong>€99</strong><span>tout compris</span></div>
-<a href="demo-email.html" class="demo-link">Voir une démonstration →</a>
-</div>
-
-<div class="card">
-<span class="card-tag tag-rec">récurrent</span>
-<div class="card-icon ic-green">📱</div>
-<h3>Réseaux sociaux autopilote</h3>
-<p>5 posts par semaine, générés par IA dans votre ton, planifiés automatiquement sur LinkedIn, Instagram ou Facebook.</p>
-<div class="card-price"><strong>€99</strong><span>/mois</span></div>
-<a href="demo-reseaux.html" class="demo-link">Voir une démonstration →</a>
-</div>
-
-<div class="card">
-<div class="card-icon ic-amber">🔔</div>
-<h3>Relances automatiques</h3>
-<p>Prospects froids, devis sans réponse, factures impayées — l'IA envoie la bonne relance au bon moment, sans que vous y pensiez.</p>
-<div class="card-price"><strong>€199</strong><span>setup + €39/mois</span></div>
-<a href="demo-relance.html" class="demo-link">Voir une démonstration →</a>
-</div>
-
-<div class="card">
-<div class="card-icon ic-gray">📄</div>
-<h3>Tri et résumé de documents</h3>
-<p>Factures, CV, emails, contrats — l'IA les lit, les classe et vous fait un résumé. Idéal pour comptables, RH, avocats.</p>
-<div class="card-price"><strong>€199</strong><span>tout compris</span></div>
-<a href="demo-documents.html" class="demo-link">Voir une démonstration →</a>
-</div>
-
-<div class="card card-featured">
-<span class="card-tag tag-pop">meilleure offre</span>
-<div class="card-icon ic-green">⚡</div>
-<h3>Pack complet PME</h3>
-<p>Chatbot + emails automatiques + réseaux sociaux. Tout votre business automatisé en un seul forfait. Vous gagnez sur chaque service.</p>
-<div class="card-price"><strong>€399</strong><span>setup + €149/mois</span></div>
-<a href="demo-chatbot.html" class="demo-link">Voir une démonstration →</a>
-</div>
-
-</div>
-</section>
-
+<div class="card"><span class="card-tag tag-pop">populaire</span><div class="card-icon ic-green">💬</div><h3>Chatbot IA pour votre site</h3><p>Vos clients posent une question — l'IA répond instantanément, 24h/24, avec vos informations. Fini les demandes qui restent sans réponse.</p><div class="card-price"><strong>€149</strong><span>setup + €49/mois</span></div><div class="card-free">✦ Inclus dans l'essai gratuit</div><br><a href="demo-chatbot.html" class="demo-link">Voir une démonstration →</a></div>
+<div class="card"><div class="card-icon ic-amber">✉️</div><h3>Emails automatiques personnalisés</h3><p>Un prospect remplit votre formulaire — il reçoit un email sur-mesure généré par IA dans la minute. Relance à J+3 et J+7 incluse.</p><div class="card-price"><strong>€99</strong><span>tout compris</span></div><div class="card-free">✦ Inclus dans l'essai gratuit</div><br><a href="demo-email.html" class="demo-link">Voir une démonstration →</a></div>
+<div class="card"><span class="card-tag tag-rec">récurrent</span><div class="card-icon ic-green">📱</div><h3>Réseaux sociaux autopilote</h3><p>5 posts par semaine, générés par IA dans votre ton, planifiés automatiquement sur LinkedIn, Instagram ou Facebook.</p><div class="card-price"><strong>€99</strong><span>/mois</span></div><div class="card-free">✦ Inclus dans l'essai gratuit</div><br><a href="demo-reseaux.html" class="demo-link">Voir une démonstration →</a></div>
+<div class="card"><div class="card-icon ic-amber">🔔</div><h3>Relances automatiques</h3><p>Prospects froids, devis sans réponse, factures impayées — l'IA envoie la bonne relance au bon moment, sans que vous y pensiez.</p><div class="card-price"><strong>€199</strong><span>setup + €39/mois</span></div><div class="card-free">✦ Inclus dans l'essai gratuit</div><br><a href="demo-relance.html" class="demo-link">Voir une démonstration →</a></div>
+<div class="card"><div class="card-icon ic-gray">📄</div><h3>Tri et résumé de documents</h3><p>Factures, CV, emails, contrats — l'IA les lit, les classe et vous fait un résumé. Idéal pour comptables, RH, avocats.</p><div class="card-price"><strong>€199</strong><span>tout compris</span></div><div class="card-free">✦ Inclus dans l'essai gratuit</div><br><a href="demo-documents.html" class="demo-link">Voir une démonstration →</a></div>
+<div class="card card-featured"><span class="card-tag tag-pop">recommandé</span><div class="card-icon ic-green">⚡</div><h3>Pack complet PME</h3><p>Chatbot + emails + relances + réseaux sociaux. Tout votre business automatisé en un seul forfait. C'est ce que j'installe pendant l'essai.</p><div class="card-price"><strong>€399</strong><span>setup + €149/mois</span></div><div class="card-free">✦ 14 jours gratuits, vous gardez ce que vous voulez</div><br><a href="demo-chatbot.html" class="demo-link">Voir une démonstration →</a></div>
+</div></section>
 <section class="how">
 <div class="section-label">Comment ça marche</div>
 <div class="section-title">3 étapes, c'est tout</div>
 <div class="steps">
-<div class="step">
-<div class="step-num">1</div>
-<h4>On en parle 10 minutes</h4>
-<p>Vous m'expliquez ce qui vous prend du temps. Je vous dis ce qu'on peut automatiser et combien ça coûte. Gratuit.</p>
-</div>
-<div class="step">
-<div class="step-num">2</div>
-<h4>Je configure tout en 48h</h4>
-<p>Je construis l'automatisation sur-mesure. Vous n'avez rien à faire, rien à installer. Je vous montre le résultat.</p>
-</div>
-<div class="step">
-<div class="step-num">3</div>
-<h4>Ça tourne tout seul</h4>
-<p>L'automatisation fonctionne 24h/24. Si quelque chose casse, je le corrige. Vous vous concentrez sur votre métier.</p>
-</div>
-</div>
-</section>
-
+<div class="step"><div class="step-num">1</div><h4>On en parle 10 minutes</h4><p>Vous m'expliquez ce qui vous prend du temps. Je vous dis ce qu'on peut automatiser. C'est gratuit.</p></div>
+<div class="step"><div class="step-num">2</div><h4>J'installe tout en 48h</h4><p>Le pack complet, gratuitement. Vous n'avez rien à faire. Vous testez pendant 14 jours.</p></div>
+<div class="step"><div class="step-num">3</div><h4>Vous gardez ce qui marche</h4><p>Au bout de 14 jours, vous décidez. Pas de surprise, pas d'engagement. Vous ne payez que ce que vous gardez.</p></div>
+</div></section>
 <section class="compare">
 <div class="section-label">Pourquoi moi</div>
 <div class="section-title" style="margin-bottom:1.75rem">Comparez</div>
 <div class="compare-box">
 <div class="compare-row compare-head"><span>Critère</span><span>Agence classique</span><span>Gino.ia</span></div>
+<div class="compare-row"><span>Essai gratuit</span><span class="val-them">Jamais</span><span class="val-you">14 jours</span></div>
 <div class="compare-row"><span>Chatbot IA</span><span class="val-them">€2 000 – 5 000</span><span class="val-you">€149</span></div>
 <div class="compare-row"><span>Automatisation email</span><span class="val-them">€1 500+</span><span class="val-you">€99</span></div>
 <div class="compare-row"><span>Community manager</span><span class="val-them">€1 500/mois</span><span class="val-you">€99/mois</span></div>
 <div class="compare-row"><span>Délai</span><span class="val-them">2–4 semaines</span><span class="val-you">48h</span></div>
-<div class="compare-row"><span>Engagement</span><span class="val-them">3–12 mois</span><span class="val-you">Sans engagement</span></div>
-</div>
-</section>
-
+<div class="compare-row"><span>Engagement</span><span class="val-them">3–12 mois</span><span class="val-you">Aucun</span></div>
+</div></section>
+<section class="guarantee"><div class="guarantee-box">
+<div class="guarantee-icon">🛡️</div>
+<h3>Zéro risque. Littéralement.</h3>
+<p>J'installe le pack complet gratuitement pendant 14 jours. <strong>Si ça ne vous apporte pas de résultats, je retire tout et vous ne payez rien.</strong> Pas de contrat, pas d'engagement, pas de mauvaise surprise. Vous ne gardez que ce qui vous rapporte.</p>
+</div></section>
 <section class="cta-section">
-<h2>Prêt à récupérer vos heures perdues ?</h2>
-<p>Un appel de 10 minutes suffit pour identifier ce qu'on peut automatiser dans votre entreprise.</p>
-<a href="https://www.linkedin.com/in/gino-essono-menié-0592113a6/" class="cta-btn">Me contacter maintenant</a>
+<h2>Prêt à tester ?</h2>
+<p>Un appel de 10 minutes suffit. Je vous explique ce que je peux automatiser chez vous, j'installe tout en 48h, vous testez 14 jours.</p>
+<p class="free-reminder">✦ 14 jours gratuits, sans engagement, sans carte bancaire</p>
+<a href="https://www.linkedin.com/in/gino-essono-menié-0592113a6/" class="cta-btn">Démarrer l'essai gratuit</a>
 </section>
-
-<footer class="footer">
-Gino.ia — Automatisation IA pour PME
-</footer>
-
+<footer class="footer">Gino.ia — Automatisation IA pour PME</footer>
 </body>
 </html>
